@@ -2,12 +2,14 @@
 title: "Reproducible Research Assignment 1"
 author: "Geons"
 date: "Sunday, January 10, 2016"
-output: html_document
+output: pdf_document
 ---
 
 ## Preparation : 
 
 ```{r, echo=TRUE, results='show', warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='figure/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
 # Clean up before start / tabula rasa (optional)
 rm(list=ls())
 
@@ -191,7 +193,7 @@ fakeData$dagvdweek<- as.factor(fakeData$dagvdweek)
 ppData <- ddply(fakeData, .(interval,dagvdweek), summarise, avesteps = mean(steps))
 xyplot(avesteps ~ interval | dagvdweek, data=ppData,
        type='l',
-       lwd=2,
+       lwd=1,
        layout=c(1,2),
       ylab = 'Number of steps')
 ```
